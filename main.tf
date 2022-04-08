@@ -37,7 +37,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "wireguard" {
-  ami                         = "ami-05cf2c352da0bfb2e"
+  ami                         = data.aws_ami.ubuntu.id
   instance_type               = var.instance_type
   key_name                    = var.ssh_key_id
   iam_instance_profile        = aws_iam_instance_profile.wireguard_profile.name
